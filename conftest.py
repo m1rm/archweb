@@ -73,6 +73,11 @@ def denylist(db):
     call_command('loaddata', 'main/fixtures/denylist.json')
 
 
+@pytest.fixture
+def reports(db, package):
+    call_command('loaddata', 'devel/fixtures/reports.json')
+
+
 @pytest.fixture(autouse=True)
 def use_dummy_cache_backend(settings):
     settings.CACHES = {

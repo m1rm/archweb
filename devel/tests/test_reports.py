@@ -59,6 +59,22 @@ class DeveloperReport(TransactionTestCase):
         response = self.client.get('/devel/reports/signature-time', follow=True)
         self.assertEqual(response.status_code, 200)
 
+    def test_reports_non_existing_dependencies(self):
+        response = self.client.get('/devel/reports/non-existing-dependencies', follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_reports_required_orphan(self):
+        response = self.client.get('/devel/reports/required-orphan', follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_reports_non_reproducible_packages(self):
+        response = self.client.get('/devel/reports/non-reproducible-packages', follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_reports_orphan_non_reproducible_packages(self):
+        response = self.client.get('/devel/reports/orphan-non-reproducible-packages', follow=True)
+        self.assertEqual(response.status_code, 200)
+
     def test_reports_pkgbases(self):
         response = self.client.get('/devel/reports/old/pkgbases/')
         self.assertEqual(response.status_code, 200)

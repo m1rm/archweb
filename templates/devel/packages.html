@@ -90,9 +90,7 @@ $(document).ready(function() {
     };
     $('#report_filter input').change(filter_func);
     $('#criteria_reset').click(function() { filter_pkgs_reset(filter_func); });
-    // run on page load to ensure current form selections take effect
-    filter_report_load('{{ report.slug }}');
-    filter_func();
+    filter_report_apply('{{ report.slug }}');
 });
 </script>
 {% endblock %}

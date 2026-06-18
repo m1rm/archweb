@@ -135,6 +135,7 @@ INSTALLED_APPS = [
     'public',
     'releng',
     'visualize',
+    'ninja',
     'api',
 ]
 

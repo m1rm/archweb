@@ -1,6 +1,6 @@
 from ninja import NinjaAPI
 
-from api.routes import releng
+from api.routes import devel, releng
 
 api = NinjaAPI(
     version="1",
@@ -11,3 +11,4 @@ api = NinjaAPI(
 )
 
 api.add_router("/v1/releng/", releng.router)
+api.add_router("/v1/devel/", devel.router)

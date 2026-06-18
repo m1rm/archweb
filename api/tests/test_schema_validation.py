@@ -39,3 +39,10 @@ def test_openapi_releases_schema_fields(client):
 def test_openapi_docs_url_exists(client):
     response = client.get('/api/docs/')
     assert response.status_code == 200
+
+
+def test_openapi_docs_uses_local_static_not_cdn(client):
+    response = client.get('/api/docs/')
+    body = response.content.decode()
+    assert '/static/ninja/swagger-ui-bundle.js' in body
+    assert 'cdn.jsdelivr.net' not in body

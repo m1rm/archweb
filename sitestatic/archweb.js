@@ -255,13 +255,47 @@ function filter_report_save(report_id) {
 function filter_report_load(report_id) {
     var state = localStorage['filter_report_' + report_id];
     if (!state)
-        return;
+        return false;
     state = JSON.parse(state);
-    $('#report_filter input[type="checkbox"]').prop('checked', false);
+    if (state.length === 0) {
+        localStorage.removeItem('filter_report_' + report_id);
+        return false;
+    }
+    var checked = {};
     $.each(state, function (i, v) {
-        // this assumes our only filters are checkboxes
-        $('#report_filter input[name="' + v['name'] + '"]').prop('checked', true);
+        checked[v['name']] = true;
     });
+    var applicable = false;
+    $('#report_filter input.arch_filter, #report_filter input.repo_filter').each(function() {
+        applicable = true;
+        var name = $(this).attr('name');
+        $(this).prop('checked', !!checked[name]);
+    });
+    if (!applicable)
+        return false;
+    /* Saved filters may reference arches/repos not on this page. */
+    if ($('#report_filter .arch_filter:checked').length === 0) {
+        $('#report_filter .arch_filter').prop('checked', true);
+    }
+    if ($('#report_filter .repo_filter:checked').length === 0) {
+        $('#report_filter .repo_filter').prop('checked', true);
+    }
+    return true;
+}
+function filter_report_apply(report_id) {
+    filter_report_load(report_id);
+    filter_pkgs_list('#report_filter', '#dev-report-results tbody');
+    var tbody = $('#dev-report-results tbody');
+    if (tbody.children().length > 0 &&
+            tbody.children(':not([hidden])').length === 0) {
+        localStorage.removeItem('filter_report_' + report_id);
+        filter_pkgs_reset(function() {
+            filter_pkgs_list('#report_filter', '#dev-report-results tbody');
+            filter_report_save(report_id);
+        });
+        return;
+    }
+    filter_report_save(report_id);
 }
 
 /* signoffs.html */

@@ -1,0 +1,350 @@
+[
+  {
+    "model": "main.package",
+    "pk": 6,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "unneeded-orphan",
+      "pkgbase": "unneeded-orphan",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Orphan package with no maintainer and no dependents",
+      "url": "https://example.com/",
+      "filename": "unneeded-orphan-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 7,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "orphan-dep-consumer",
+      "pkgbase": "orphan-dep-consumer",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package that depends on an orphan",
+      "url": "https://example.com/",
+      "filename": "orphan-dep-consumer-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 8,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "required-orphan",
+      "pkgbase": "required-orphan",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Orphan package required by another package",
+      "url": "https://example.com/",
+      "filename": "required-orphan-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 9,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "missing-dep-holder",
+      "pkgbase": "missing-dep-holder",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package with a dependency that does not exist",
+      "url": "https://example.com/",
+      "filename": "missing-dep-holder-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 10,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "flagged-old",
+      "pkgbase": "flagged-old",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package flagged out-of-date more than 30 days ago",
+      "url": "https://example.com/",
+      "filename": "flagged-old-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": "2020-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 11,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "bad-compress",
+      "pkgbase": "bad-compress",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package with poor compression ratio",
+      "url": "https://example.com/",
+      "filename": "bad-compress-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 100000,
+      "installed_size": 100000,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 12,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "uncompressed-man-pkg",
+      "pkgbase": "uncompressed-man-pkg",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package with uncompressed manpages",
+      "url": "https://example.com/",
+      "filename": "uncompressed-man-pkg-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 13,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "uncompressed-info-pkg",
+      "pkgbase": "uncompressed-info-pkg",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package with uncompressed info pages",
+      "url": "https://example.com/",
+      "filename": "uncompressed-info-pkg-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 14,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "repro-fail-pkg",
+      "pkgbase": "repro-fail-pkg",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Package that failed reproducible build checks",
+      "url": "https://example.com/",
+      "filename": "repro-fail-pkg-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "main.package",
+    "pk": 15,
+    "fields": {
+      "repo": 1,
+      "arch": 3,
+      "pkgname": "orphan-repro-fail",
+      "pkgbase": "orphan-repro-fail",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "pkgdesc": "Orphan package that failed reproducible build checks",
+      "url": "https://example.com/",
+      "filename": "orphan-repro-fail-1.0-1-x86_64.pkg.tar.xz",
+      "compressed_size": 4096,
+      "installed_size": 8192,
+      "build_date": "2024-01-01T00:00:00Z",
+      "last_update": "2024-01-01T00:00:00Z",
+      "files_last_update": null,
+      "created": "2024-01-01T00:00:00Z",
+      "packager_str": "Test Packager <test@archlinux.org>",
+      "packager": null,
+      "signature_bytes": null,
+      "flag_date": null
+    }
+  },
+  {
+    "model": "packages.depend",
+    "pk": 1,
+    "fields": {
+      "pkg": 7,
+      "name": "required-orphan",
+      "comparison": "",
+      "version": "",
+      "description": null,
+      "deptype": "D"
+    }
+  },
+  {
+    "model": "packages.depend",
+    "pk": 2,
+    "fields": {
+      "pkg": 9,
+      "name": "ghost-dependency",
+      "comparison": "",
+      "version": "",
+      "description": null,
+      "deptype": "D"
+    }
+  },
+  {
+    "model": "packages.depend",
+    "pk": 3,
+    "fields": {
+      "pkg": 2,
+      "name": "repro-fail-pkg",
+      "comparison": "",
+      "version": "",
+      "description": null,
+      "deptype": "D"
+    }
+  },
+  {
+    "model": "main.packagefile",
+    "pk": 1,
+    "fields": {
+      "pkg": 12,
+      "is_directory": false,
+      "directory": "/usr/share/man/man1/",
+      "filename": "example.1"
+    }
+  },
+  {
+    "model": "main.packagefile",
+    "pk": 2,
+    "fields": {
+      "pkg": 13,
+      "is_directory": false,
+      "directory": "/usr/share/info/",
+      "filename": "example.info"
+    }
+  },
+  {
+    "model": "main.rebuilderdstatus",
+    "pk": 1,
+    "fields": {
+      "pkg": 14,
+      "pkgname": "repro-fail-pkg",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "arch": 3,
+      "repo": 1,
+      "status": 1,
+      "was_repro": false,
+      "build_id": 42
+    }
+  },
+  {
+    "model": "main.rebuilderdstatus",
+    "pk": 2,
+    "fields": {
+      "pkg": 15,
+      "pkgname": "orphan-repro-fail",
+      "pkgver": "1.0",
+      "pkgrel": "1",
+      "epoch": 0,
+      "arch": 3,
+      "repo": 1,
+      "status": 1,
+      "was_repro": false,
+      "build_id": 43
+    }
+  }
+]

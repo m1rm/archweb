@@ -34,6 +34,7 @@ from todolists.utils import get_annotated_todolists
 
 from .forms import NewUserForm, ProfileForm, UserProfileForm
 from .models import UserProfile
+from .report_data import collect_report_data, get_report_by_slug, get_report_packages
 from .reports import available_reports
 from .utils import generate_repo_auth_token, get_annotated_maintainers
 
@@ -279,58 +280,36 @@ def change_profile(request):
                    'profile_form': profile_form})
 
 
-def get_report_packages(report, username):
-    packages = Package.objects.normal()
-    if report.slug in ('uncompressed-man', 'uncompressed-info'):
-        packages = report.packages(packages, username)
-    else:
-        packages = report.packages(packages)
-
-    return packages
-
-
 @login_required
 def report_pkgbases(request, report_name: str, username: str | None = None) -> HttpResponse:
-    report = {report.slug: report for report in available_reports()}.get(report_name, None)
-    if report is None:
+    if get_report_by_slug(report_name) is None:
         raise Http404
 
-    packages = get_report_packages(report, username)
+    report = get_report_by_slug(report_name)
+    effective_username = username if report.personal else None
+    packages = get_report_packages(report, effective_username)
     pkgbases = sorted({pkg.pkgbase for pkg in packages})
     return HttpResponse('\n'.join(pkgbases), content_type='text/plain')
 
 
 @login_required
 def report(request, report_name, username=None):
-    available = {report.slug: report for report in available_reports()}
-    report = available.get(report_name, None)
-    if report is None:
-        raise Http404
-
-    packages = Package.objects.normal()
-    user = None
-    if username:
-        user = get_object_or_404(User, username=username, is_active=True)
-        maintained = PackageRelation.objects.filter(
-            user=user, type=PackageRelation.MAINTAINER).values('pkgbase')
-        packages = packages.filter(pkgbase__in=maintained)
+    data = collect_report_data(report_name, username)
 
     maints = User.objects.filter(id__in=PackageRelation.objects.filter(
         type=PackageRelation.MAINTAINER).values('user'))
 
-    packages = get_report_packages(report, username)
-    arches = {pkg.arch for pkg in packages}
-    repos = {pkg.repo for pkg in packages}
+    report_obj = data['report']
     context = {
         'all_maintainers': maints,
-        'title': report.description,
-        'report': report,
-        'maintainer': user,
-        'packages': packages,
-        'arches': sorted(arches),
-        'repos': sorted(repos),
-        'column_names': report.names,
-        'column_attrs': report.attrs,
+        'title': report_obj.description,
+        'report': report_obj,
+        'maintainer': data['maintainer'],
+        'packages': data['packages'],
+        'arches': data['arches'],
+        'repos': data['repos'],
+        'column_names': report_obj.names,
+        'column_attrs': report_obj.attrs,
     }
     return render(request, 'devel/packages.html', context)
 
